@@ -29,7 +29,7 @@ INSERT INTO Counterparty_1 VALUES
 SELECT * FROM Counterparty_1;
 
 --No Window  Function
-DECLARE @DT DATETIME = '2021-02-03 00:00:00';
+DECLARE @DT DATETIME = '2021-02-03 00:00:00';     --объ€вл€ем переменную, в которой хранитс€ дата дл€ фильтра
 SELECT Counterparty_id, status FROM Counterparty_1
 WHERE valid_from <= @DT AND (valid_to>@DT OR valid_to IS NULL) ORDER BY Counterparty_id;
 

@@ -21,9 +21,9 @@ INSERT INTO Counterparty VALUES
 SELECT * FROM Counterparty;
 
 GO
-WITH Cte AS (
+WITH Cte AS (																   --common table expression 
 SELECT Counterparty_id,version,name,address,
-MAX(Version) OVER(PARTITION BY Counterparty_id) AS LastVer FROM Counterparty)
-SELECT Counterparty_id,version,name,address FROM Cte WHERE version = LastVer;
+MAX(Version) OVER(PARTITION BY Counterparty_id) AS LastVer FROM Counterparty)  --новая колонка, которая = максимальной версии внутри "окна"
+SELECT Counterparty_id,version,name,address FROM Cte WHERE version = LastVer;  --выбор нужных колонок из нашего CTE
 GO
 
